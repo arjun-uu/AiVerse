@@ -2,16 +2,10 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import helmet from "helmet";
-import { ClerkExpressWithAuth, requireAuth } from "@clerk/express";
+import { clerkMiddleware, requireAuth } from "@clerk/express"; // ✅ correct import
 import aiRouter from "./routes/aiRoutes.js";
 import connectCloudinary from "./configs/cloudnary.js";
 import creationsRouter from "./routes/userRoutes.js";
-
-// ✅ Initialize Clerk middleware properly
-const clerkMiddleware = ClerkExpressWithAuth({
-  publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
-  secretKey: process.env.CLERK_SECRET_KEY,
-});
 
 const app = express();
 
@@ -25,8 +19,8 @@ app.use(
 app.use(helmet());
 app.use(express.json());
 
-// ✅ Apply Clerk middleware globally
-app.use(clerkMiddleware);
+// ✅ Apply Clerk middleware directly (no redefinition)
+app.use(clerkMiddleware());
 
 // Debug log
 app.use((req, res, next) => {
