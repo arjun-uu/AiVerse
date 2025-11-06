@@ -40,17 +40,17 @@ const GenerateImages = () => {
 
       const token = await getToken();
 
-      const formData = new FormData();
-      formData.append("prompt", input);
-      formData.append("publish", false);
-
+      // ✅ Send JSON instead of FormData
       const { data } = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/ai/generate-image`,
-        formData,
+        {
+          prompt: input,
+          publish,
+        },
         {
           headers: {
-            Authorization: `Bearer ${token}`, 
-            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json", // ✅ important
           },
           withCredentials: true,
         }
