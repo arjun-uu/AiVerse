@@ -41,7 +41,7 @@ const GenerateImages = () => {
       const token = await getToken();
 
       const formData = new FormData();
-      formData.append("prompt", prompt);
+      formData.append("prompt", input);
       formData.append("publish", false);
 
       const { data } = await axios.post(

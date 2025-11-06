@@ -34,7 +34,7 @@ const RemoveObj = () => {
       const token = await getToken();
 
       const formData = new FormData();
-      formData.append("image", input); // must match backend multer field name
+      formData.append("image", input);
       formData.append("object", object);
 
       const { data } = await axios.post(
