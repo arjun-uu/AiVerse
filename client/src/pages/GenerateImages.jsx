@@ -75,7 +75,10 @@ const GenerateImages = () => {
   };
 
   return (
-    <div className="relative h-full overflow-y-auto p-8 flex flex-col md:flex-row gap-8 text-slate-700 bg-gradient-to-br from-[#f0faff] via-[#eef2ff] to-[#f6edff]">
+    <div
+      className="relative min-h-screen p-6 flex flex-col lg:flex-row gap-8 text-slate-700 
+  bg-gradient-to-br from-[#f8faff] to-[#eef3ff] overflow-y-auto"
+    >
       {/* 💫 Background Glow Effects */}
       <div className="absolute top-20 left-16 w-72 h-72 bg-[#00c2ff]/10 blur-3xl rounded-full"></div>
       <div className="absolute bottom-10 right-16 w-96 h-96 bg-[#7f00ff]/10 blur-3xl rounded-full"></div>
@@ -209,4 +212,3 @@ const GenerateImages = () => {
 };
 
 export default GenerateImages;
- 

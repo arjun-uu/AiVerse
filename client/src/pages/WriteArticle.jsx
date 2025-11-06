@@ -66,7 +66,9 @@ const WriteArticle = () => {
   };
 
   return (
-    <div className="relative h-full  p-8 flex flex-col lg:flex-row gap-8 text-slate-700 bg-gradient-to-br from-[#f8faff] to-[#eef3ff]">
+    <div className="relative min-h-screen p-6 flex flex-col lg:flex-row gap-8 text-slate-700 
+  bg-gradient-to-br from-[#f8faff] to-[#eef3ff] overflow-y-auto"
+>
       {/* Background gradients */}
       <div className="absolute  top-20 left-10 w-64 h-64 bg-[#4A7AFF]/10 blur-3xl rounded-full animate-pulse"></div>
       <div className="absolute  bottom-10 right-10 w-72 h-72 bg-[#b617f4]/10 blur-3xl rounded-full animate-pulse"></div>

@@ -66,7 +66,10 @@ const RemoveObj = () => {
   };
 
   return (
-    <div className="relative h-full overflow-y-auto p-8 flex flex-col md:flex-row gap-8 text-slate-700 bg-gradient-to-br from-[#f8f3ff] via-[#fce7ff] to-[#eef4ff]">
+    <div
+      className="relative min-h-screen p-6 flex flex-col lg:flex-row gap-8 text-slate-700 
+  bg-gradient-to-br from-[#f8faff] to-[#eef3ff] overflow-y-auto"
+    >
       {/* ✨ Background Glow Effects */}
       <div className="absolute top-20 left-12 w-80 h-80 bg-[#b617f4]/10 blur-3xl rounded-full animate-pulse"></div>
       <div className="absolute bottom-16 right-20 w-96 h-96 bg-[#4A7AFF]/10 blur-3xl rounded-full animate-pulse"></div>

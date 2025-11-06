@@ -58,7 +58,10 @@ const ReviewResume = () => {
   };
 
   return (
-    <div className="relative h-full overflow-y-auto p-8 flex flex-col md:flex-row gap-8 text-slate-700 bg-gradient-to-br from-[#eef3ff] via-[#f1e8ff] to-[#edf2ff]">
+    <div
+      className="relative min-h-screen p-6 flex flex-col lg:flex-row gap-8 text-slate-700 
+  bg-gradient-to-br from-[#f8faff] to-[#eef3ff] overflow-y-auto"
+    >
       {/* ✨ Background Glow Blobs */}
       <div className="absolute top-24 left-16 w-72 h-72 bg-[#4A7AFF]/10 blur-3xl rounded-full animate-pulse"></div>
       <div className="absolute bottom-16 right-20 w-96 h-96 bg-[#8B5CF6]/10 blur-3xl rounded-full animate-pulse"></div>

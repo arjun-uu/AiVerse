@@ -62,7 +62,10 @@ const RemoveBg = () => {
   };
 
   return (
-    <div className="relative h-full overflow-y-auto p-8 flex flex-col md:flex-row gap-8 text-slate-700 bg-gradient-to-br from-[#e0fff6] via-[#f0faff] to-[#e7f7ff]">
+    <div
+      className="relative min-h-screen p-6 flex flex-col lg:flex-row gap-8 text-slate-700 
+  bg-gradient-to-br from-[#f8faff] to-[#eef3ff] overflow-y-auto"
+    >
       {/* 🌈 Background Glow Orbs */}
       <div className="absolute top-20 left-16 w-80 h-80 bg-[#00d4a4]/10 blur-3xl rounded-full animate-pulse"></div>
       <div className="absolute bottom-10 right-16 w-96 h-96 bg-[#009dff]/10 blur-3xl rounded-full animate-pulse"></div>

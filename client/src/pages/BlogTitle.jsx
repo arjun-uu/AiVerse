@@ -74,7 +74,10 @@ const BlogTitle = () => {
   };
 
   return (
-    <div className="relative h-full overflow-y-auto p-8 flex flex-col md:flex-row gap-8 text-slate-700 bg-gradient-to-br from-[#f5f7ff] via-[#f9f0ff] to-[#eef8ff]">
+    <div
+      className="relative min-h-screen p-6 flex flex-col lg:flex-row gap-8 text-slate-700 
+  bg-gradient-to-br from-[#f8faff] to-[#eef3ff] overflow-y-auto"
+    >
       {/* ✨ Background Orbs */}
       <div className="absolute top-16 right-20 w-72 h-72 bg-[#b617f4]/10 blur-3xl rounded-full"></div>
       <div className="absolute bottom-10 left-16 w-80 h-80 bg-[#4A7AFF]/10 blur-3xl rounded-full"></div>
