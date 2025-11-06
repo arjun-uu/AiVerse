@@ -39,15 +39,8 @@ const WriteArticle = () => {
 
       const { data } = await axios.post(
         "/api/ai/generate-article",
-        {
-          prompt,
-          length: selectedLength.length,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { prompt, length: selectedLength.length },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       if (data.success) {
