@@ -34,6 +34,22 @@ app.get("/", (req, res) => res.send("🚀 Server is live and running!"));
 app.use("/api/ai", requireAuth(), aiRouter);
 app.use("/api/creations", creationsRouter);
 
+
+
+app.get("/api/status", (req, res) => {
+  res.json({
+    success: true,
+    message: "✅ AiVerse backend is live",
+    environment: {
+      clerkPublishable: !!process.env.CLERK_PUBLISHABLE_KEY,
+      clerkSecret: !!process.env.CLERK_SECRET_KEY,
+      openai: !!process.env.OPENAI_API_KEY,
+      database: !!process.env.DATABASE_URL,
+      cloudinary: !!process.env.CLOUDINARY_CLOUD_NAME,
+    },
+  });
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
