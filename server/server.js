@@ -2,12 +2,13 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import helmet from "helmet";
-import {ClerkExpressWithAuth , clerkMiddleware, requireAuth } from "@clerk/express";
+import { ClerkExpressWithAuth, requireAuth } from "@clerk/express";
 import aiRouter from "./routes/aiRoutes.js";
 import connectCloudinary from "./configs/cloudnary.js";
 import creationsRouter from "./routes/userRoutes.js";
 
-ClerkExpressWithAuth({
+// ✅ Initialize Clerk middleware properly
+const clerkMiddleware = ClerkExpressWithAuth({
   publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
   secretKey: process.env.CLERK_SECRET_KEY,
 });
@@ -16,14 +17,16 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://ai-verse-three.vercel.app"],
     credentials: true,
   })
 );
 
 app.use(helmet());
 app.use(express.json());
-app.use(clerkMiddleware());
+
+// ✅ Apply Clerk middleware globally
+app.use(clerkMiddleware);
 
 // Debug log
 app.use((req, res, next) => {
