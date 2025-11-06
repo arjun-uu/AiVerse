@@ -34,16 +34,21 @@ const RemoveObj = () => {
       const token = await getToken();
 
       const formData = new FormData();
-      formData.append("image", input); // must match backend field name
+      formData.append("image", input); // must match backend multer field name
       formData.append("object", object);
 
-      const { data } = await axios.post("/api/ai/remove-object", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-        timeout: 60000,
-      });
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/ai/remove-object`, // ✅ use full base URL
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // ✅ required for Clerk auth
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true, // ✅ critical for cross-origin auth
+          timeout: 60000,
+        }
+      );
 
       if (data.success) {
         setOutput(data.content);

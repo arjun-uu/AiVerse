@@ -28,14 +28,22 @@ const ReviewResume = () => {
       toast.loading("📄 Reviewing your resume...", { id: "review" });
 
       const token = await getToken();
-      const formData = new FormData();
-      formData.append("resume", input);
 
-      const { data } = await axios.post("/api/ai/review-resume", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const formData = new FormData();
+      formData.append("resume", input); // must match multer field name in backend
+
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/ai/review-resume`, 
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data", 
+          },
+          withCredentials: true, // 
+          timeout: 60000, // optional but good
+        }
+      );
 
       if (data.success) {
         setOutput(data.content);

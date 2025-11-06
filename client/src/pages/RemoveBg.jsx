@@ -31,13 +31,18 @@ const RemoveBg = () => {
       const formData = new FormData();
       formData.append("image", input);
 
-      const { data } = await axios.post("/api/ai/remove-bg", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-        timeout: 60000,
-      });
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/ai/remove-bg`, // ✅ use full base URL
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true, // ✅ allows Clerk cookies / CORS
+          timeout: 60000,
+        }
+      );
 
       if (data.success) {
         setOutput(data.content);
