@@ -40,6 +40,12 @@ const GenerateImages = () => {
 
       const token = await getToken();
 
+      console.log("🌐 Backend URL:", import.meta.env.VITE_BASE_URL);
+      console.log(
+        "🪪 Clerk Key Loaded:",
+        !!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+      );
+
       // ✅ Send JSON instead of FormData
       const { data } = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/ai/generate-image`,
