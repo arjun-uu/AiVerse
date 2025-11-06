@@ -142,13 +142,13 @@ export const generateImage = async (req, res) => {
       });
     }
 
-    // ✅ Premium feature restriction
-    if (plan !== "premium") {
-      return res.status(403).json({
-        success: false,
-        message: "This feature is available only for premium users.",
-      });
-    }
+    // // ✅ Premium feature restriction
+    // if (plan !== "premium") {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: "This feature is available only for premium users.",
+    //   });
+    // }
 
     // ✅ Input validation
     if (!prompt || prompt.trim() === "") {
@@ -222,12 +222,12 @@ export const removeBg = async (req, res) => {
     const { userId } = getAuth(req);
     const { plan } = req;
 
-    if (plan !== "premium") {
-      return res.status(403).json({
-        success: false,
-        message: "This feature is only available for premium users.",
-      });
-    }
+    // if (plan !== "premium") {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: "This feature is only available for premium users.",
+    //   });
+    // }
 
     const imagePath = req.file.path;
 
@@ -334,14 +334,14 @@ export const resumeReview = async (req, res) => {
     const resume = req.file;
     console.log("📄 Resume uploaded:", resume?.originalname || "No file");
 
-    // 🔒 Step 1: Validate access
-    if (plan !== "premium") {
-      console.log("🚫 Access denied — non-premium user tried resume review.");
-      return res.status(403).json({
-        success: false,
-        message: "This feature is only available for premium users.",
-      });
-    }
+    // // 🔒 Step 1: Validate access
+    // if (plan !== "premium") {
+    //   console.log("🚫 Access denied — non-premium user tried resume review.");
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: "This feature is only available for premium users.",
+    //   });
+    // }
 
     // 🧾 Step 2: Validate file
     if (!resume) {
