@@ -1,0 +1,49 @@
+import React, { useState } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { assets } from '../assets/assets'
+import { Menu, X } from 'lucide-react'
+import SideBar from '../components/SideBar' 
+import {SignIn, useUser } from '@clerk/clerk-react'
+
+
+const Layout = () => {
+  const navigate = useNavigate()
+  const [sideBar, setSideBar] = useState(false)
+  const {user} = useUser()
+
+  return user? (
+    <div className='flex flex-col items-start justify-start h-screen'>
+
+      {/* Navbar */}
+      <nav className='w-full px-8 min-h-14 flex items-center justify-between border-b border-gray-200'>
+        <img 
+          className="w-24 sm:w-36 md:w-44 cursor-pointer object-contain"
+          onClick={() => navigate("/")} 
+          src={assets.logo} 
+          alt="AiVerse Logo" 
+        />
+
+        {/* Hamburger toggle */}
+        {sideBar ? (
+          <X onClick={() => setSideBar(false)} className='w-6 h-5 text-gray-600 sm:hidden' />
+        ) : (
+          <Menu onClick={() => setSideBar(true)} className='w-6 h-5 text-gray-600 sm:hidden' />
+        )}
+      </nav>
+
+      {/* Content section */}
+      <div className='flex-1 w-full flex h-[calc(100vh-64px)]'>
+        <SideBar sideBar={sideBar} setSideBar={setSideBar} />
+        <div className='flex-1 bg-[#F4F7FB]'>
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  ):(
+    <div className='flex items-center justify-center h-screen'>
+      <SignIn/>
+    </div>
+  )
+}
+
+export default Layout
