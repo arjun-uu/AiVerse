@@ -2,11 +2,15 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import helmet from "helmet";
-import { clerkMiddleware, requireAuth } from "@clerk/express";
+import {ClerkExpressWithAuth , clerkMiddleware, requireAuth } from "@clerk/express";
 import aiRouter from "./routes/aiRoutes.js";
 import connectCloudinary from "./configs/cloudnary.js";
 import creationsRouter from "./routes/userRoutes.js";
 
+ClerkExpressWithAuth({
+  publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+  secretKey: process.env.CLERK_SECRET_KEY,
+});
 
 const app = express();
 
